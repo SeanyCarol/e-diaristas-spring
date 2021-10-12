@@ -17,6 +17,15 @@ public class HousekeeperController {
   @Autowired
   private HousekeeperRepository repository;
 
+  @GetMapping
+  public ModelAndView list() {
+    var modelAndView = new ModelAndView("admin/housekeepers/list");
+
+    modelAndView.addObject("housekeepers", repository.findAll());
+
+    return modelAndView;
+  }
+
   @GetMapping("/cadastrar")
   public ModelAndView register() {
     var modelAndView = new ModelAndView("admin/housekeepers/form");
