@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-diaristas</title>
+  </head>
+  <body>
+    <main>
+      <h1>Lista de diaristas</h1>
+
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Estado</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="housekeeper : ${housekeepers}">
+            <td th:text="${housekeeper.id}"></td>
+            <td th:text="${housekeeper.fullname}"></td>
+            <td th:text="${housekeeper.email}"></td>
+            <td th:text="${housekeeper.state}"></td>
+            <td>
+              <a href="#">Editar</a>
+              <a href="#">Excluir</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>

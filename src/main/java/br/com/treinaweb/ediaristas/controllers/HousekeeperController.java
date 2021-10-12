@@ -39,6 +39,6 @@ public class HousekeeperController {
   public String register(Housekeeper housekeeper) {
     repository.save(housekeeper);
 
-    return "redirect:/admin/diaristas/cadastrar";
+    return "redirect:/admin/diaristas";
   }
 }
