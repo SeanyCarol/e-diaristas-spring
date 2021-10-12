@@ -52,6 +52,13 @@ public class HousekeeperController {
     return modelAndView;
   }
 
+  @PostMapping("/{id}/editar")
+  public String update(@PathVariable Long id, Housekeeper housekeeper) {
+    repository.save(housekeeper);
+
+    return "redirect:/admin/diaristas";
+  }
+
   @GetMapping("/{id}/excluir")
   public String delete(@PathVariable Long id) {
     repository.deleteById(id);
