@@ -1,6 +1,7 @@
 package br.com.treinaweb.ediaristas.models;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,9 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.com.treinaweb.ediaristas.converters.CepConverter;
+import br.com.treinaweb.ediaristas.converters.CpfConverter;
+import br.com.treinaweb.ediaristas.converters.TelephoneConverter;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -40,6 +44,7 @@ public class Housekeeper {
   @Size(min = 11, max = 14)
   @CPF
   @Column(nullable = false, unique = true, length = 11)
+  @Convert(converter = CpfConverter.class)
   private String cpf;
 
   @NotNull
@@ -51,6 +56,7 @@ public class Housekeeper {
   @NotNull
   @Size(min = 11, max = 15)
   @Column(nullable = false, length = 11)
+  @Convert(converter = TelephoneConverter.class)
   private String telephone;
 
   @NotNull
@@ -74,6 +80,7 @@ public class Housekeeper {
   @NotNull
   @Size(min = 8, max = 9)
   @Column(nullable = false, length = 8)
+  @Convert(converter = CepConverter.class)
   private String cep;
 
   @NotNull
