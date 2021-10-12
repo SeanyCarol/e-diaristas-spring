@@ -21,7 +21,12 @@
             <td th:text="${housekeeper.email}"></td>
             <td th:text="${housekeeper.state}"></td>
             <td>
-              <a class="btn btn-sm btn-warning" href="#">Editar</a>
+              <a
+                class="btn btn-sm btn-warning"
+                th:href="@{/admin/diaristas/{id}/editar (id=${housekeeper.id})}"
+              >
+                Editar
+              </a>
               <a
                 class="btn btn-sm btn-danger"
                 th:href="@{/admin/diaristas/{id}/excluir (id=${housekeeper.id})}"

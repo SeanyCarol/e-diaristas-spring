@@ -43,6 +43,15 @@ public class HousekeeperController {
     return "redirect:/admin/diaristas";
   }
 
+  @GetMapping("/{id}/editar")
+  public ModelAndView update(@PathVariable Long id) {
+    var modelAndView = new ModelAndView("admin/housekeepers/form");
+
+    modelAndView.addObject("housekeeper", repository.getById(id));
+
+    return modelAndView;
+  }
+
   @GetMapping("/{id}/excluir")
   public String delete(@PathVariable Long id) {
     repository.deleteById(id);
