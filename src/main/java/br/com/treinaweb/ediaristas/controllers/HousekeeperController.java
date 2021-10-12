@@ -1,7 +1,10 @@
 package br.com.treinaweb.ediaristas.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,7 +40,11 @@ public class HousekeeperController {
   }
 
   @PostMapping("/cadastrar")
-  public String register(Housekeeper housekeeper) {
+  public String register(@Valid Housekeeper housekeeper, BindingResult result) {
+    if (result.hasErrors()) {
+      return "admin/housekeepers/form";
+    }
+
     repository.save(housekeeper);
 
     return "redirect:/admin/diaristas";
@@ -53,7 +60,11 @@ public class HousekeeperController {
   }
 
   @PostMapping("/{id}/editar")
-  public String update(@PathVariable Long id, Housekeeper housekeeper) {
+  public String update(@PathVariable Long id, @Valid Housekeeper housekeeper, BindingResult result) {
+    if (result.hasErrors()) {
+      return "admin/housekeepers/form";
+    }
+
     repository.save(housekeeper);
 
     return "redirect:/admin/diaristas";

@@ -8,61 +8,137 @@
         <div class="mb-3">
           <label class="form-label" for="fullname">Nome Completo</label>
           <input class="form-control" type="text" th:field="*{fullname}" />
+          <ul>
+            <li
+              th:each="error : ${#fields.errors('fullname')}"
+              th:text="${error}"
+            ></li>
+          </ul>
         </div>
 
         <div class="mb-3">
           <label class="form-label" for="cpf">CPF</label>
           <input class="form-control" type="text" th:field="*{cpf}" />
+          <ul>
+            <li
+              th:each="error : ${#fields.errors('cpf')}"
+              th:text="${error}"
+            ></li>
+          </ul>
         </div>
 
         <div class="mb-3">
           <label class="form-label" for="email">E-mail</label>
           <input class="form-control" type="email" th:field="*{email}" />
+          <ul>
+            <li
+              th:each="error : ${#fields.errors('email')}"
+              th:text="${error}"
+            ></li>
+          </ul>
         </div>
 
         <div class="mb-3">
           <label class="form-label" for="telephone">Telefone</label>
           <input class="form-control" type="text" th:field="*{telephone}" />
+          <ul>
+            <li
+              th:each="error : ${#fields.errors('telephone')}"
+              th:text="${error}"
+            ></li>
+          </ul>
         </div>
 
         <div class="mb-3">
           <label class="form-label" for="address">Logradouro</label>
           <input class="form-control" type="text" th:field="*{address}" />
+          <ul>
+            <li
+              th:each="error : ${#fields.errors('address')}"
+              th:text="${error}"
+            ></li>
+          </ul>
         </div>
 
         <div class="mb-3">
           <label class="form-label" for="number">Número</label>
           <input class="form-control" type="text" th:field="*{number}" />
+          <ul>
+            <li
+              th:each="error : ${#fields.errors('number')}"
+              th:text="${error}"
+            ></li>
+          </ul>
         </div>
 
         <div class="mb-3">
           <label class="form-label" for="neighborhood">Bairro</label>
           <input class="form-control" type="text" th:field="*{neighborhood}" />
+          <ul>
+            <li
+              th:each="error : ${#fields.errors('neighborhood')}"
+              th:text="${error}"
+            ></li>
+          </ul>
         </div>
 
         <div class="mb-3">
           <label class="form-label" for="addressComplement">Complemento</label>
-          <input class="form-control" type="text" th:field="*{addressComplement}" />
+          <input
+            class="form-control"
+            type="text"
+            th:field="*{addressComplement}"
+          />
+          <ul>
+            <li
+              th:each="error : ${#fields.errors('addressComplement')}"
+              th:text="${error}"
+            ></li>
+          </ul>
         </div>
 
         <div class="mb-3">
           <label class="form-label" for="cep">CEP</label>
           <input class="form-control" type="text" th:field="*{cep}" />
+          <ul>
+            <li
+              th:each="error : ${#fields.errors('cep')}"
+              th:text="${error}"
+            ></li>
+          </ul>
         </div>
 
         <div class="mb-3">
           <label class="form-label" for="state">Estado</label>
           <input class="form-control" type="text" th:field="*{state}" />
+          <ul>
+            <li
+              th:each="error : ${#fields.errors('state')}"
+              th:text="${error}"
+            ></li>
+          </ul>
         </div>
 
         <div class="mb-3">
           <label class="form-label" for="city">Cidade</label>
           <input class="form-control" type="text" th:field="*{city}" />
+          <ul>
+            <li
+              th:each="error : ${#fields.errors('city')}"
+              th:text="${error}"
+            ></li>
+          </ul>
         </div>
 
         <div class="mb-3">
           <label class="form-label" for="ibgeCode">Código IBGE</label>
           <input class="form-control" type="text" th:field="*{ibgeCode}" />
+          <ul>
+            <li
+              th:each="error : ${#fields.errors('ibgeCode')}"
+              th:text="${error}"
+            ></li>
+          </ul>
         </div>
 
         <button class="btn btn-success" type="submit">Salvar</button>
