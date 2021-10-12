@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-diaristas</title>
+  </head>
+  <body>
+    <h1>Cadastro de diarista</h1>
+
+    <form method="POST" th:object="${housekeeper}">
+      <div class="mb-3">
+        <label class="form-label" for="fullname">Nome Completo</label>
+        <input class="form-control" type="text" th:field="*{fullname}" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="cpf">CPF</label>
+        <input class="form-control" type="text" th:field="*{cpf}" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="email">E-mail</label>
+        <input class="form-control" type="email" th:field="*{email}" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="telephone">Telefone</label>
+        <input class="form-control" type="text" th:field="*{telephone}" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="address">Logradouro</label>
+        <input class="form-control" type="text" th:field="*{address}" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="number">Número</label>
+        <input class="form-control" type="text" th:field="*{number}" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="neighborhood">Bairro</label>
+        <input class="form-control" type="text" th:field="*{neighborhood}" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="addressComplement">Complemento</label>
+        <input class="form-control" type="text" th:field="*{addressComplement}" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="cep">CEP</label>
+        <input class="form-control" type="text" th:field="*{cep}" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="state">Estado</label>
+        <input class="form-control" type="text" th:field="*{state}" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="city">Cidade</label>
+        <input class="form-control" type="text" th:field="*{city}" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="ibgeCode">Código IBGE</label>
+        <input class="form-control" type="text" th:field="*{ibgeCode}" />
+      </div>
+
+      <button class="btn btn-success" type="submit">Salvar</button>
+    </form>
+  </body>
+</html>
