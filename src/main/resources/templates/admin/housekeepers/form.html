@@ -4,7 +4,11 @@
     <main>
       <h1>Cadastro de diarista</h1>
 
-      <form method="POST" th:object="${housekeeper}">
+      <form
+        method="POST"
+        th:object="${housekeeper}"
+        enctype="multipart/form-data"
+      >
         <div class="mb-3">
           <label class="form-label" for="fullname">Nome Completo</label>
           <input class="form-control" type="text" th:field="*{fullname}" />
@@ -154,6 +158,11 @@
               th:text="${error}"
             ></li>
           </ul>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="image">Foto</label>
+          <input class="form-control" type="file" id="image" name="image" />
         </div>
 
         <button class="btn btn-success" type="submit">Salvar</button>

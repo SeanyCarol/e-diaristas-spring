@@ -1,5 +1,7 @@
 package br.com.treinaweb.ediaristas.controllers;
 
+import java.io.IOException;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.treinaweb.ediaristas.models.Housekeeper;
 import br.com.treinaweb.ediaristas.repositories.HousekeeperRepository;
+import br.com.treinaweb.ediaristas.services.FileService;
 
 @Controller
 @RequestMapping("/admin/diaristas")
@@ -20,6 +25,9 @@ public class HousekeeperController {
 
   @Autowired
   private HousekeeperRepository repository;
+
+  @Autowired
+  private FileService fileService;
 
   @GetMapping
   public ModelAndView list() {
@@ -40,11 +48,14 @@ public class HousekeeperController {
   }
 
   @PostMapping("/cadastrar")
-  public String register(@Valid Housekeeper housekeeper, BindingResult result) {
+  public String register(@RequestParam MultipartFile image, @Valid Housekeeper housekeeper, BindingResult result)
+      throws IOException {
     if (result.hasErrors()) {
       return "admin/housekeepers/form";
     }
 
+    var filename = fileService.save(image);
+    housekeeper.setPhotograph(filename);
     repository.save(housekeeper);
 
     return "redirect:/admin/diaristas";
@@ -60,9 +71,19 @@ public class HousekeeperController {
   }
 
   @PostMapping("/{id}/editar")
-  public String update(@PathVariable Long id, @Valid Housekeeper housekeeper, BindingResult result) {
+  public String update(@RequestParam MultipartFile image, @PathVariable Long id, @Valid Housekeeper housekeeper,
+      BindingResult result) throws IOException {
     if (result.hasErrors()) {
       return "admin/housekeepers/form";
+    }
+
+    var currentHousekeeper = repository.getById(id);
+
+    if (image.isEmpty()) {
+      housekeeper.setPhotograph(currentHousekeeper.getPhotograph());
+    } else {
+      var filename = fileService.save(image);
+      housekeeper.setPhotograph(filename);
     }
 
     repository.save(housekeeper);

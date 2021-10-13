@@ -98,4 +98,7 @@ public class Housekeeper {
   @NotEmpty
   @Column(nullable = false)
   private String ibgeCode;
+
+  @Column(nullable = false)
+  private String photograph;
 }
