@@ -94,8 +94,6 @@ public class Housekeeper {
   @Column(nullable = false, length = 2)
   private String state;
 
-  @NotNull
-  @NotEmpty
   @Column(nullable = false)
   private String ibgeCode;
 

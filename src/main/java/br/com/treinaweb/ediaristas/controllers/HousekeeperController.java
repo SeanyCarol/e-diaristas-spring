@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.treinaweb.ediaristas.models.Housekeeper;
 import br.com.treinaweb.ediaristas.repositories.HousekeeperRepository;
 import br.com.treinaweb.ediaristas.services.FileService;
+import br.com.treinaweb.ediaristas.services.ViaCepService;
 
 @Controller
 @RequestMapping("/admin/diaristas")
@@ -28,6 +29,9 @@ public class HousekeeperController {
 
   @Autowired
   private FileService fileService;
+
+  @Autowired
+  private ViaCepService viaCepService;
 
   @GetMapping
   public ModelAndView list() {
@@ -56,6 +60,12 @@ public class HousekeeperController {
 
     var filename = fileService.save(image);
     housekeeper.setPhotograph(filename);
+
+    var cep = housekeeper.getCep();
+    var address = viaCepService.getAddressByCep(cep);
+    var ibgeCode = address.getIbge();
+    housekeeper.setIbgeCode(ibgeCode);
+
     repository.save(housekeeper);
 
     return "redirect:/admin/diaristas";
@@ -85,6 +95,11 @@ public class HousekeeperController {
       var filename = fileService.save(image);
       housekeeper.setPhotograph(filename);
     }
+
+    var cep = housekeeper.getCep();
+    var address = viaCepService.getAddressByCep(cep);
+    var ibgeCode = address.getIbge();
+    housekeeper.setIbgeCode(ibgeCode);
 
     repository.save(housekeeper);
 
