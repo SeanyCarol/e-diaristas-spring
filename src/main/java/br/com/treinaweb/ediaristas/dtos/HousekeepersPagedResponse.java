@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class HousekeepersPagedResponse {
 
+  @JsonProperty("diaristas")
   private List<Housekeeper> housekeepers;
 
   @JsonProperty("quantidade_diaristas")
