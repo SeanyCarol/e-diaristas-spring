@@ -4,6 +4,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.io.IOException;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -125,5 +126,10 @@ public class Housekeeper {
   @JsonProperty("foto_usuario")
   public String getPhotographUrl() throws IOException {
     return linkTo(methodOn(FileController.class).file(this.photograph)).toString();
+  }
+
+  @JsonProperty("reputacao")
+  public Integer getReputation() {
+    return ThreadLocalRandom.current().nextInt(0, 6);
   }
 }
